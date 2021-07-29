@@ -132,9 +132,62 @@
           </div>
         </div>
         <div class="flex w-full sm:w-auto">
-          <button class="mr-2 shadow-md btn btn-primary">
-            Upload New Files
-          </button>
+          <a
+            href="javascript:;"
+            data-toggle="modal"
+            data-target="#static-backdrop-modal-preview"
+            class="mr-2 shadow-md btn btn-primary"
+            >Upload New Files</a
+          >
+          <!-- BEGIN: Modal Content -->
+          <div
+            id="static-backdrop-modal-preview"
+            class="modal"
+            data-backdrop="static"
+            tabindex="-1"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-xl">
+              <div class="modal-content">
+                <div class="px-5 py-10 modal-body">
+                  <div class="text-center">
+                    <div class="mb-5">
+                      <div class="preview">
+                        <dropzone
+                          ref="dropzoneSingleRef"
+                          :options="{
+                            url: 'https://httpbin.org/post',
+                            thumbnailWidth: 150,
+                            maxFilesize: 0.5,
+                            maxFiles: 1,
+                            headers: { 'My-Awesome-Header': 'header value' }
+                          }"
+                          class="dropzone"
+                        >
+                          <div class="text-lg font-medium">
+                            Drop files here or click to upload.
+                          </div>
+                          <div class="text-gray-600">
+                            This is just a demo dropzone. Selected files are
+                            <span class="font-medium">not</span> actually
+                            uploaded.
+                          </div>
+                        </dropzone>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      data-dismiss="modal"
+                      class="w-24 btn btn-primary"
+                    >
+                      Ok
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END: Modal Content -->
           <div class="dropdown">
             <button
               class="px-2 text-gray-700 dropdown-toggle btn box dark:text-gray-300"
@@ -147,11 +200,31 @@
             <div class="w-40 dropdown-menu">
               <div class="p-2 dropdown-menu__content box dark:bg-dark-1">
                 <a
-                  href=""
+                  href="javascript:;"
+                  data-toggle="modal"
+                  data-target="#sharefile-modal-preview"
                   class="flex items-center block p-2 transition duration-300 ease-in-out bg-white rounded-md dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2"
                 >
                   <FileIcon class="w-4 h-4 mr-2" /> Share Files
                 </a>
+                <div class="preview">
+                  <!-- BEGIN: Modal Content -->
+                  <div
+                    id="sharefile-modal-preview"
+                    class="modal"
+                    tabindex="-1"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="p-10 text-center modal-body">
+                          This is totally awesome blank modal!Share!
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- END: Modal Content -->
+                </div>
                 <a
                   href=""
                   class="flex items-center block p-2 transition duration-300 ease-in-out bg-white rounded-md dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2"
@@ -317,6 +390,8 @@ import {
   TrashIcon
 } from "vue-feather-icons";
 
+import Dropzone from "@/global-components/dropzone/Main.vue";
+
 export default {
   components: {
     ImageIcon,
@@ -335,7 +410,8 @@ export default {
     SettingsIcon,
     MoreVerticalIcon,
     UsersIcon,
-    TrashIcon
+    TrashIcon,
+    Dropzone
   },
   data() {
     return {

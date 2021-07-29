@@ -29,6 +29,7 @@ export default {
     '~/plugins/feather_icon.client.js',
     '~/plugins/faker.js',
     '~/plugins/lodash.js',
+    '~/plugins/tw-starter.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

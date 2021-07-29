@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@left4code/tw-starter": "^1.0.28",
+    "cash-dom": "^8.1.0",
     "core-js": "^3.15.1",
     "dayjs": "^1.10.4",
     "dropzone": "^5.7.6",
