@@ -28,7 +28,7 @@ export default {
   plugins: [
     '~/plugins/feather_icon.client.js',
     '~/plugins/faker.js',
-    '~/plugins/lodash.js',
+    '~/plugins/external_libraries.js',
     '~/plugins/tw-starter.js',
   ],
 

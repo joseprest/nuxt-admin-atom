@@ -5,8 +5,6 @@
 </template>
 
 <script>
-import tippy, { roundArrow, animateFill } from "tippy.js";
-
 export default {
   props: {
     content: {
@@ -26,12 +24,13 @@ export default {
       default: null
     }
   },
+  mounted() {
+    this.init();
+  },
   methods: {
-    init: () => {
-      tippy(tippyRef.value, {
-        plugins: [animateFill],
-        content: props.content,
-        arrow: roundArrow,
+    init() {
+      this.$tippy(this.$refs.tippyRef, {
+        content: this.content,
         popperOptions: {
           modifiers: [
             {
@@ -42,9 +41,8 @@ export default {
             }
           ]
         },
-        animateFill: false,
         animation: "shift-away",
-        ...props.options
+        ...this.options
       });
     },
     bindInstance: () => {}

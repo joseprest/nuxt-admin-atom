@@ -200,31 +200,11 @@
             <div class="w-40 dropdown-menu">
               <div class="p-2 dropdown-menu__content box dark:bg-dark-1">
                 <a
-                  href="javascript:;"
-                  data-toggle="modal"
-                  data-target="#sharefile-modal-preview"
                   class="flex items-center block p-2 transition duration-300 ease-in-out bg-white rounded-md dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2"
                 >
                   <FileIcon class="w-4 h-4 mr-2" /> Share Files
                 </a>
-                <div class="preview">
-                  <!-- BEGIN: Modal Content -->
-                  <div
-                    id="sharefile-modal-preview"
-                    class="modal"
-                    tabindex="-1"
-                    aria-hidden="true"
-                  >
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="p-10 text-center modal-body">
-                          This is totally awesome blank modal!Share!
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- END: Modal Content -->
-                </div>
+
                 <a
                   href=""
                   class="flex items-center block p-2 transition duration-300 ease-in-out bg-white rounded-md dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2"
@@ -301,14 +281,22 @@
               <div class="w-40 dropdown-menu">
                 <div class="p-2 dropdown-menu__content box dark:bg-dark-1">
                   <a
-                    href=""
                     class="flex items-center block p-2 transition duration-300 ease-in-out bg-white rounded-md dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2"
+                    @click="
+                      showModal(
+                        'sharing-modal-preview',
+                        faker.files[0].fileName
+                      )
+                    "
                   >
                     <UsersIcon class="w-4 h-4 mr-2" /> Share File
                   </a>
+
                   <a
-                    href=""
                     class="flex items-center block p-2 transition duration-300 ease-in-out bg-white rounded-md dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2"
+                    @click="
+                      showModal('delete-modal-preview', faker.files[0].fileName)
+                    "
                   >
                     <TrashIcon class="w-4 h-4 mr-2" /> Delete
                   </a>
@@ -318,6 +306,94 @@
           </div>
         </div>
       </div>
+
+      <!-- External Modal -->
+
+      <!-- BEGIN: Small Modal Content -->
+      <div
+        id="sharing-modal-preview"
+        class="modal"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="p-10 text-center modal-body">
+              <div
+                class="flex items-center mt-3 -ml-2 lg:ml-0 lg:justify-between lg:mt-0"
+              >
+                <span>{{ processingFileName }}</span>
+                <div
+                  class="flex link-wrapper lg:ml-0 lg:justify-center lg:mt-0"
+                >
+                  <a
+                    href="#"
+                    class="flex items-center justify-center w-8 h-8 ml-2 text-gray-500 border rounded-full dark:border-dark-5 zoom-in"
+                    content="Facebook"
+                  >
+                    <FacebookIcon class="w-3 h-3 fill-current" />
+                  </a>
+                  <a
+                    tag="a"
+                    href="#"
+                    class="flex items-center justify-center w-8 h-8 ml-2 text-gray-500 border rounded-full dark:border-dark-5 zoom-in"
+                    content="Twitter"
+                  >
+                    <TwitterIcon class="w-3 h-3 fill-current" />
+                  </a>
+                  <a
+                    tag="a"
+                    href="#"
+                    class="flex items-center justify-center w-8 h-8 ml-2 text-gray-500 border rounded-full dark:border-dark-5 zoom-in"
+                    content="Linked In"
+                  >
+                    <LinkedinIcon class="w-3 h-3 fill-current" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END: Small Modal Content -->
+
+      <!-- BEGIN: DeleteModal Content -->
+      <div
+        id="delete-modal-preview"
+        class="modal"
+        tabindex="-1"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="p-0 modal-body">
+              <div class="p-5 text-center">
+                <x-circle-icon class="w-16 h-16 mx-auto mt-3 text-theme-6" />
+                <div class="mt-5 text-3xl">Are you sure?</div>
+                <div class="mt-2 text-gray-600">
+                  Do you really want to delete {{ processingFileName }} record?
+                  <br />This process cannot be undone.
+                </div>
+              </div>
+              <div class="px-5 pb-8 text-center">
+                <button
+                  type="button"
+                  data-dismiss="modal"
+                  class="w-24 mr-1 btn btn-outline-secondary dark:border-dark-5 dark:text-gray-300"
+                >
+                  Cancel
+                </button>
+                <button type="button" class="w-24 btn btn-danger">
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END: DeleteModal Content -->
+
+      <!-- End -->
       <!-- END: Directory & Files -->
       <!-- BEGIN: Pagination -->
       <div
@@ -326,12 +402,12 @@
         <ul class="pagination">
           <li>
             <a class="pagination__link" href="">
-              <ChevronsLeftIcon class="w-4 h-4" />
+              <chevrons-left-icon class="w-4 h-4" />
             </a>
           </li>
           <li>
             <a class="pagination__link" href="">
-              <ChevronLeftIcon class="w-4 h-4" />
+              <chevron-left-icon class="w-4 h-4" />
             </a>
           </li>
           <li>
@@ -351,12 +427,12 @@
           </li>
           <li>
             <a class="pagination__link" href="">
-              <ChevronRightIcon class="w-4 h-4" />
+              <chevron-right-icon class="w-4 h-4" />
             </a>
           </li>
           <li>
             <a class="pagination__link" href="">
-              <ChevronsRightIcon class="w-4 h-4" />
+              <chevrons-right-icon class="w-4 h-4" />
             </a>
           </li>
         </ul>
@@ -387,10 +463,15 @@ import {
   SettingsIcon,
   MoreVerticalIcon,
   UsersIcon,
-  TrashIcon
+  TrashIcon,
+  XCircleIcon,
+  FacebookIcon,
+  TwitterIcon,
+  LinkedinIcon
 } from "vue-feather-icons";
 
 import Dropzone from "@/global-components/dropzone/Main.vue";
+import Tippy from "@/global-components/tippy/Main.vue";
 
 export default {
   components: {
@@ -411,13 +492,29 @@ export default {
     MoreVerticalIcon,
     UsersIcon,
     TrashIcon,
-    Dropzone
+    XCircleIcon,
+    FacebookIcon,
+    TwitterIcon,
+    LinkedinIcon,
+
+    Dropzone,
+    Tippy
   },
   data() {
     return {
-      ldash: null
+      ldash: null,
+      processingFileName: ""
     };
   },
-  mounted() {}
+  mounted() {},
+  methods: {
+    showModal(modalId, param = "") {
+      this.processingFileName = param;
+      this.$cash(`#${modalId}`).modal("show");
+    },
+    hideModal() {
+      this.$cash(`#${modalId}`).modal("hide");
+    }
+  }
 };
 </script>
