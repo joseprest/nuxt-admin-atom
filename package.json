@@ -1,0 +1,33 @@
+{
+  "name": "rubick-nuxt",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@left4code/tw-starter": "^1.0.28",
+    "core-js": "^3.15.1",
+    "dayjs": "^1.10.4",
+    "dropzone": "^5.7.6",
+    "highlight.js": "^10.6.0",
+    "nuxt": "^2.15.7",
+    "tabulator-tables": "^4.9.3",
+    "tiny-slider": "^2.9.3",
+    "tippy.js": "^6.2.7",
+    "toastify-js": "^1.9.3",
+    "tom-select": "^1.7.5",
+    "vue-feather-icons": "^5.1.0",
+    "zoom-vanilla.js": "^2.0.6"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^4.2.0",
+    "fibers": "^5.0.0",
+    "postcss": "^8.3.5",
+    "sass": "^1.36.0",
+    "sass-loader": "^10.2.0"
+  }
+}
