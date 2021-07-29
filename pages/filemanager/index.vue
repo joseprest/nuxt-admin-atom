@@ -342,9 +342,6 @@ export default {
       ldash: null
     };
   },
-  mounted() {
-    console.log(this.$f());
-    console.log(this.$_());
-  }
+  mounted() {}
 };
 </script>
